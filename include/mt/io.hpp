@@ -1,5 +1,6 @@
 #pragma once
 #include "vec.hpp"
+#include "matrix.hpp"
 #include <iostream>
 
 namespace mt::io
@@ -13,6 +14,20 @@ namespace mt::io
             std::cout << v.data()[i] << (i == v.data().size() - 1 ? "" : ", ");
 
         std::cout << " }\n";
+    }
+
+    template <typename T, std::size_t N>
+    inline void print_mat(const mt::mat<T, N> &m)
+    {
+        for (std::size_t i = 0; i < N; ++i)
+        {
+            std::cout << "{ ";
+
+            for (std::size_t j = 0; j < N; ++j)
+                std::cout << m.data()[i][j] << (j == N - 1 ? "" : ", ");
+
+            std::cout << " }\n";
+        }
     }
 }
 
