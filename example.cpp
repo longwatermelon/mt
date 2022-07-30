@@ -1,6 +1,5 @@
 #include <iostream>
-#include <mt/vec.hpp>
-#include <mt/io.hpp>
+#include <mt/mt.hpp>
 
 int main()
 {
