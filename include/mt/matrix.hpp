@@ -2,8 +2,12 @@
 #include <cctype>
 #include <array>
 
+
 namespace mt
 {
+    template <typename T, std::size_t N>
+    using mat_data = std::array<std::array<T, N>, N>;
+
     template <typename T, std::size_t N>
     class mat
     {
@@ -21,10 +25,28 @@ namespace mt
             }
         }
 
-        const std::array<std::array<T, N>, N> &data() const { return m_data; }
+        mat(const mat_data<T, N> &data)
+            : m_data(data) {}
+
+        mat<T, N> transpose() const
+        {
+            mat_data<T, N> tr;
+
+            for (std::size_t r = 0; r < N; ++r)
+            {
+                for (std::size_t c = 0; c < N; ++c)
+                {
+                    tr[c][r] = m_data[r][c];
+                }
+            }
+
+            return tr;
+        }
+
+        const mat_data<T, N> &data() const { return m_data; }
 
     private:
-        std::array<std::array<T, N>, N> m_data{};
+        mat_data<T, N> m_data{};
     };
 }
 
