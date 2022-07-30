@@ -44,6 +44,29 @@ namespace mt
             return *this + -v;
         }
 
+        vec<T, N> operator*(float s) const
+        {
+            std::array<T, N> res;
+            for (std::size_t i = 0; i < N; ++i)
+                res[i] = m_data[i] * s;
+
+            return vec<T, N>(res);
+        }
+
+        vec<T, N> operator/(float s) const
+        {
+            std::array<T, N> res;
+            for (std::size_t i = 0; i < N; ++i)
+                res[i] = m_data[i] / s;
+
+            return res;
+        }
+
+        void operator+=(const vec<T, N> &v) { *this = *this + v; }
+        void operator-=(const vec<T, N> &v) { *this = *this - v; }
+        void operator*=(float s) { *this = *this * s; }
+        void operator/=(float s) { *this = *this / s; }
+
         const std::array<T, N> &data() const { return m_data; }
 
     protected:
