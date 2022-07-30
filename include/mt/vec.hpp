@@ -13,18 +13,35 @@ namespace mt
 
         template <typename ...Args>
         vec(Args ...args)
-            : m_data{ args... }
-        {
-            /* static_assert(sizeof...(args) == N, "[vec::vec()] Constructor does not take right no. of args."); */
-        }
+            : m_data{ args... } {}
+
+        vec(const std::array<T, N> &arr)
+            : m_data(arr) {}
 
         vec(T value)
             : m_data{ value } {}
 
-        void add(const vec<T, N> &v)
+        vec<T, N> operator-() const
         {
-            for (std::size_t i = 0; i < m_data.size(); ++i)
-                m_data[i] += v.data()[i];
+            std::array<T, N> res;
+            for (std::size_t i = 0; i < N; ++i)
+                res[i] = -m_data[i];
+
+            return vec<T, N>(res);
+        }
+
+        vec<T, N> operator+(const vec<T, N> &v) const
+        {
+            std::array<T, N> res;
+            for (std::size_t i = 0; i < N; ++i)
+                res[i] = m_data[i] + v.data()[i];
+
+            return vec<T, N>(res);
+        }
+
+        vec<T, N> operator-(const vec<T, N> &v) const
+        {
+            return *this + -v;
         }
 
         const std::array<T, N> &data() const { return m_data; }

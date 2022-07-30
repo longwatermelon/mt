@@ -1,5 +1,5 @@
 #pragma once
-#include "vec.h"
+#include "vec.hpp"
 #include <iostream>
 
 namespace mt::io
