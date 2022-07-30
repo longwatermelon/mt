@@ -39,7 +39,10 @@ int main()
 
     mt::mat3 m0(d0);
     mt::mat3 m1(d1);
+    mt::mat3 m = m0 * m1;
 
-    mt::io::print_mat(m0 * m1);
+    mt::io::print_mat(m);
+    std::cout << "\n";
+    mt::io::print_mat(m * 2.f);
 }
 

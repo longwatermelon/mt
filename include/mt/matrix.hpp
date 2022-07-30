@@ -46,6 +46,20 @@ namespace mt
             return mat<T, N>(res);
         }
 
+        mat<T, N> operator*(float s) const
+        {
+            mat_data<T, N> res;
+            for (std::size_t r = 0; r < N; ++r)
+            {
+                for (std::size_t c = 0; c < N; ++c)
+                {
+                    res[r][c] = m_data[r][c] * s;
+                }
+            }
+
+            return mat<T, N>(res);
+        }
+
         mat<T, N> transpose() const
         {
             mat_data<T, N> tr;
