@@ -33,6 +33,15 @@ namespace mt
         std::array<T, N> m_data;
     };
 
+    class vec2 : public vec<float, 2>
+    {
+    public:
+        vec2(float x, float y)
+            : vec(x, y), x(m_data[0]), y(m_data[1]) {}
+
+        float &x, &y;
+    };
+
     class vec3 : public vec<float, 3>
     {
     public:
