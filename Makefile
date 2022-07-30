@@ -7,20 +7,14 @@ OBJS=$(addprefix obj/, $(SRC:.cpp=.o))
 
 .PHONY: dirs clean
 
-all: dirs lib example
+all: dirs example
 
 example: example.cpp
-	$(CXX) $(CXXFLAGS) -Isrc $< $(LIBS) -Llib -lmt
-
-lib: $(OBJS)
-	$(AR) $(ARFLAGS) lib/libmt.a $^
-
-obj/src/%.o: src/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -Iinclude $< $(LIBS)
 
 dirs:
-	mkdir -p obj/src lib
+	mkdir -p obj/src
 
 clean:
-	-rm -rf obj/src lib a.out
+	-rm -rf obj/src a.out
 
