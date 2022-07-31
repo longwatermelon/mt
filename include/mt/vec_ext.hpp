@@ -20,16 +20,6 @@ namespace mt
         vec3(float x, float y, float z)
             : vec(x, y, z) {}
 
-        vec3 cross(const vec3 &v) const
-        {
-            vec3 res;
-            res.x = y * v.z - z * v.y;
-            res.y = z * v.x - x * v.z;
-            res.z = x * v.y - y * v.x;
-
-            return res;
-        }
-
         float &x{ m_data[0] }, &y{ m_data[1] }, &z{ m_data[2] };
     };
 
@@ -42,5 +32,41 @@ namespace mt
 
         float &x{ m_data[0] }, &y{ m_data[1] }, &z{ m_data[2] }, &w{ m_data[3] };
     };
+
+    template <typename T, std::size_t N>
+    float dot(const vec<T, N> &a, const vec<T, N> &b)
+    {
+        float res = 0.f;
+        for (std::size_t i = 0; i < N; ++i)
+            res += a.data()[i] * b.data()[i];
+
+        return res;
+    }
+
+    inline vec3 cross(const vec3 &a, const vec3 &b)
+    {
+        vec3 res;
+        res.x = a.y * b.z - a.z * b.y;
+        res.y = a.z * b.x - a.x * b.z;
+        res.z = a.x * b.y - a.y * b.x;
+
+        return res;
+    }
+
+    template <typename T, std::size_t N>
+    inline float length(const vec<T, N> &v)
+    {
+        float len = 0.f;
+        for (std::size_t i = 0; i < N; ++i)
+            len += v.data()[i] * v.data()[i];
+
+        return std::sqrt(len);
+    }
+
+    template <typename T, std::size_t N>
+    inline vec<T, N> normalize(const vec<T, N> &v)
+    {
+        return v / length(v);
+    }
 }
 

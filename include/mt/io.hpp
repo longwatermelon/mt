@@ -1,6 +1,7 @@
 #pragma once
 #include "vec.hpp"
 #include "matrix.hpp"
+#include "quaternion.hpp"
 #include <iostream>
 
 namespace mt::io
@@ -29,5 +30,7 @@ namespace mt::io
             std::cout << " }\n";
         }
     }
+
+    inline void print_quat(const mt::quat &q) { print_vec(q); }
 }
 

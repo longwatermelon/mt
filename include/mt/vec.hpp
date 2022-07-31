@@ -68,29 +68,6 @@ namespace mt
         void operator*=(float s) { *this = *this * s; }
         void operator/=(float s) { *this = *this / s; }
 
-        float dot(const vec<T, N> &v) const
-        {
-            float res = 0.f;
-            for (std::size_t i = 0; i < N; ++i)
-                res += m_data[i] * v.data()[i];
-
-            return res;
-        }
-
-        float length() const
-        {
-            float len = 0.f;
-            for (std::size_t i = 0; i < N; ++i)
-                len += m_data[i] * m_data[i];
-
-            return std::sqrt(len);
-        }
-
-        vec<T, N> normalize() const
-        {
-            return *this / length();
-        }
-
         const std::array<T, N> &data() const { return m_data; }
 
     protected:
