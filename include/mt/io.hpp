@@ -3,18 +3,25 @@
 #include "matrix.hpp"
 #include "quaternion.hpp"
 #include <iostream>
+#include <iomanip>
 
 namespace mt::io
 {
     template <typename T, std::size_t N>
-    inline void print_vec(const mt::vec<T, N> &v)
+    inline void print_array(const std::array<T, N> &arr)
     {
         std::cout << "{ ";
 
-        for (std::size_t i = 0; i < v.data().size(); ++i)
-            std::cout << v.data()[i] << (i == v.data().size() - 1 ? "" : ", ");
+        for (std::size_t i = 0; i < arr.size(); ++i)
+            std::cout << std::fixed << std::setprecision(2) << arr[i] << (i == arr.size() - 1 ? "" : ", ");
 
         std::cout << " }\n";
+    }
+
+    template <typename T, std::size_t N>
+    inline void print_vec(const mt::vec<T, N> &v)
+    {
+        print_array<T, N>(v.data());
     }
 
     template <typename T, std::size_t N>
@@ -22,15 +29,13 @@ namespace mt::io
     {
         for (std::size_t i = 0; i < N; ++i)
         {
-            std::cout << "{ ";
-
-            for (std::size_t j = 0; j < N; ++j)
-                std::cout << m.data()[i][j] << (j == N - 1 ? "" : ", ");
-
-            std::cout << " }\n";
+            print_array<T, N>(m.data()[i]);
         }
     }
 
-    inline void print_quat(const mt::quat &q) { print_vec(q); }
+    inline void print_quat(const mt::quat &q)
+    {
+        print_array<float, 4>(q.data());
+    }
 }
 

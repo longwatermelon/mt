@@ -3,8 +3,9 @@
 
 int main()
 {
-    mt::quat quat(1.f, 2.f, 3.f, 4.f);
-    mt::io::print_quat(quat);
+    mt::quat q(mt::vec3(0.f, .5f, 1.f));
+    mt::quat inv = q.inverse();
+    mt::io::print_quat(q * inv);
 
     return 0;
 }

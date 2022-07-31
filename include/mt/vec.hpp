@@ -3,6 +3,7 @@
 #include <type_traits>
 #include <array>
 #include <cmath>
+#include <algorithm>
 
 namespace mt
 {
@@ -60,7 +61,7 @@ namespace mt
             for (std::size_t i = 0; i < N; ++i)
                 res[i] = m_data[i] / s;
 
-            return res;
+            return vec<T, N>(res);
         }
 
         void operator+=(const vec<T, N> &v) { *this = *this + v; }
