@@ -3,7 +3,7 @@ Header-only templated math library
 
 # Features
 ## vec
-Supports vec2, vec3, vec4 (float vectors) + 4 basic arithmetic operators
+Supports vec2, vec3, vec4 (float vectors)
 * `mt::vec*(...)`
 * `mt::vec*(std::array<T, N>)`
 * `mt::vec*(T)`
