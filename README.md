@@ -11,6 +11,14 @@ Supports vec2, vec3, vec4 (float vectors) + 4 basic arithmetic operators
 * `mt::normalize(vec<T, N>)`
 * `mt::dot(vec<T, N>)`
 * `mt::cross(vec<T, N>)`
+* `operator+(vec<T, N>)`
+* `operator-(vec<T, N>)`
+* `operator*(vec<T, N>)`
+* `operator/(vec<T, N>)`
+* `operator+=(vec<T, N>)`
+* `operator-=(vec<T, N>)`
+* `operator*=(vec<T, N>)`
+* `operator/=(vec<T, N>)`
 
 ## mat
 Supports mat3 and mat4 (float matrices)
