@@ -7,13 +7,15 @@
 
 namespace mt::io
 {
+    inline int precision = 3;
+
     template <typename T, std::size_t N>
     inline void print_array(const std::array<T, N> &arr)
     {
         std::cout << "{ ";
 
         for (std::size_t i = 0; i < arr.size(); ++i)
-            std::cout << std::fixed << std::setprecision(2) << arr[i] << (i == arr.size() - 1 ? "" : ", ");
+            std::cout << std::fixed << std::setprecision(precision) << arr[i] << (i == arr.size() - 1 ? "" : ", ");
 
         std::cout << " }\n";
     }

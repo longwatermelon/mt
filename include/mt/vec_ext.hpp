@@ -79,8 +79,7 @@ namespace mt
     template <typename T, std::size_t N>
     inline vec<T, N> normalize(const vec<T, N> &v)
     {
-        /* return v / length(v); */
-        return v / 2.f;
+        return v / length(v);
     }
 }
 
