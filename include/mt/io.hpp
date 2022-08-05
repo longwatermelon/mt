@@ -12,10 +12,14 @@ namespace mt::io
     template <typename T, std::size_t N>
     inline void print_array(const std::array<T, N> &arr)
     {
+        std::ios old(0);
+        old.copyfmt(std::cout);
         std::cout << "{ ";
 
         for (std::size_t i = 0; i < arr.size(); ++i)
             std::cout << std::fixed << std::setprecision(precision) << arr[i] << (i == arr.size() - 1 ? "" : ", ");
+
+        std::cout.copyfmt(old);
 
         std::cout << " }\n";
     }
